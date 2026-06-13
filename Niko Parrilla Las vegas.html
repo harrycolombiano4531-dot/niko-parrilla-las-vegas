@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Niko Parrilla Las Vegas | Bomba Terpel | Asados y parrilla</title>
+  <meta name="description" content="Parrilla real sobre Las Vegas: Punta de Anca, Carne Asada, Churrasco, Solomito, Cañón de Cerdo, Mixta, Chorizo Antioqueño y más. Ticket promedio $20.000 - $40.000 por persona.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <style>
+    :root {
+      /* Charcoal + ember palette: brasa, humo, carbón */
+      --bg: #0f0f11;
+      --card: #1a1a1f;
+      --text: #f5f5f5;
+      --muted: #a5a5b0;
+      --primary: #f56b2a;      /* ember orange */
+      --primary-hover: #e05a1a;
+      --accent: #c03b2a;       /* deep red */
+      --border: #2a2a30;
+      --shadow: 0 10px 40px -20px oklch(0.68 0.21 38 / 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: "Bebas Neue", "Impact", sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* HERO */
+    header#inicio {
+      background: linear-gradient(135deg,
+        oklch(0.16 0.015 40),
+        oklch(0.21 0.02 40)
+      );
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px oklch(0.68 0.21 38 / 0.45);
+    }
+
+    .hero-content p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p strong {
+      color: var(--primary);
+    }
+
+    .btns-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: var(--bg);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      border: none;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secundario {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secundario:hover {
+      background: #25252b;
+    }
+
+    .btn-terciario {
+      background: var(--accent);
+      color: var(--text);
+    }
+
+    .btn-terciario:hover {
+      background: #a03020;
+    }
+
+    /* SECCIONES */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    section p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    section a {
+      color: var(--primary);
+    }
+
+    section a:hover {
+      color: var(--primary-hover);
+    }
+
+    /* MENÚ / PLATOS */
+    #menu .platos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    #menu article {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #menu article:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    #menu article h3 {
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    #menu article .precio {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    #menu article p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* PRECIOS */
+    #precios .lista-precios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    #precios .item-precio {
+      background: var(--card);
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #precios .item-precio span {
+      font-size: 0.98rem;
+    }
+
+    #precios .item-precio .nombre {
+      color: var(--text);
+    }
+
+    #precios .item-precio .valor {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* GALERÍA */
+    #galeria .grid-fotos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    #galeria .grid-fotos img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #galeria .grid-fotos img:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow);
+    }
+
+    /* BOTONES MAPAS */
+    #contacto .btns-mapas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--primary);
+    }
+
+    footer a:hover {
+      color: var(--primary-hover);
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- HERO -->
+  <header id="inicio">
+    <div class="hero-content">
+      <h1>Niko Parrilla Las Vegas</h1>
+      <p>Parrilla real sobre Las Vegas: carne jugosa, porciones que sí se ven y un ambiente para comer bien y pasarla bueno.</p>
+      <p>
+        <strong>Dirección:</strong> Cl. 57 Sur #48199 48- a, Sabaneta, Antioquia.<br>
+        <strong>WhatsApp / Teléfono:</strong> 304 667 5749.<br>
+        <strong>Ticket promedio:</strong> $20.000 – $40.000 por persona.<br>
+        <strong>Horarios:</strong> abre hasta las 12 a.m. (todos los días).
+      </p>
+      <div class="btns-hero">
+        <a href="#menu" class="btn">Ver menú</a>
+        <a href="#precios" class="btn btn-secundario">Ver precios</a>
+        <a href="#reservas" class="btn btn-terciario">Pedir domicilio</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <h2>La parrilla que se respeta</h2>
+    <p>En Niko Parrilla Las Vegas nos tomamos la carne en serio: parrilla al carbón, cortes jugosos y porciones generosas para que salgas lleno y contento.</p>
+    <p>Estamos en la vía Las Vegas, dentro de la estación de gasolina Terpel, en Sabaneta: un punto clave para quienes vienen de Medellín, Itagüí o el sur del Valle de Aburrá.</p>
+    <p>Somos un lugar amigable con la comunidad LGBTQ+, donde lo importante es que vengas a pasarla bueno y comer rico.</p>
+  </section>
+
+  <!-- DESTACADOS (platos reales) -->
+  <section id="menu">
+    <h2>Los más pedidos en Niko Parrilla Las Vegas</h2>
+    <div class="platos">
+      <article>
+        <h3>Punta de Anca</h3>
+        <div class="precio">$40.000</div>
+        <p>Corte de carne jugoso, asado al carbón, con buen punto y sabor.</p>
+      </article>
+      <article>
+        <h3>Carne Asada</h3>
+        <p>Carne de res cocida lento, tierna y con sabor a parrilla.</p>
+      </article>
+      <article>
+        <h3>Churrasco</h3>
+        <p>Churrasco al carbón, jugo y sabor de parrilla clásica.</p>
+      </article>
+      <article>
+        <h3>Solomito</h3>
+        <div class="precio">$40.000</div>
+        <p>Corte fino y sabroso, ideal si te gusta la carne en el punto.</p>
+      </article>
+      <article>
+        <h3>Cañón de Cerdo Asado</h3>
+        <div class="precio">$40.000</div>
+        <p>Cerdo asado tierno, perfecto para compartir.</p>
+      </article>
+      <article>
+        <h3>Parrillas Mixta</h3>
+        <p>Combinado de carne y cerdo para que no te quede duda de nada.</p>
+      </article>
+      <article>
+        <h3>Chorizos de Entrada 19mil Efectivo</h3>
+        <div class="precio">$19.000</div>
+        <p>Chorizo antioqueño de entrada, perfecto para picar con los panas.</p>
+      </article>
+      <article>
+        <h3>Mix de Carnes</h3>
+        <p>Variedad de cortes de carne para compartir en la mesa.</p>
+      </article>
+      <article>
+        <h3>Costillas Asadas Al Carbón</h3>
+        <div class="precio">$40.000</div>
+        <p>Costillas de cerdo asadas al carbón, con sabor intenso y buen punto.</p>
+      </article>
+      <article>
+        <h3>Chorizo Antioqueño</h3>
+        <p>Chorizo clásico de la región, sabroso y con buen punto de sal.</p>
+      </article>
+      <article>
+        <h3>Hamburger</h3>
+        <p>Hamburguesa de la casa, con carne, queso y salsa Niko.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE PRECIOS -->
+  <section id="precios">
+    <h2>Precios de la parrilla</h2>
+    <p>Estos son algunos de nuestros platos con sus precios actuales en Niko Parrilla Las Vegas.</p>
+    <div class="lista-precios">
+      <div class="item-precio">
+        <span class="nombre">Costillas a la BBQ</span>
+        <span class="valor">$40.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Punta de Anca</span>
+        <span class="valor">$40.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Pechuga a la parrilla</span>
+        <span class="valor">$40.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Solomo</span>
+        <span class="valor">$40.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Cañón de cerdo</span>
+        <span class="valor">$40.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Panceta</span>
+        <span class="valor">$26.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Hamburguesa Trifásica (pechuga, carne artesanal y panceta)</span>
+        <span class="valor">$29.000</span>
+      </div>
+      <div class="item-precio">
+        <span class="nombre">Chorizo Llanero</span>
+        <span class="valor">$26.000</span>
+      </div>
+    </div>
+    <p>Los precios pueden cambiar sin previo aviso. Pregunta siempre por el valor actualizado en el punto o por WhatsApp.</p>
+  </section>
+
+  <!-- MÁS COMIDA -->
+  <section id="comida-general">
+    <h2>Más que estos platos, tenemos toda la parrilla que te antoja</h2>
+    <p>Si te gusta la carne, parrilla o simplemente comer rico, Niko Parrilla Las Vegas es tu parada.</p>
+    <p>Carnes al carbón, porciones generosas y precios entre $20.000 y $40.000 por persona, según lo que pidas.</p>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <h2>Galería Niko Parrilla Las Vegas</h2>
+    <div class="grid-fotos">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGMy_M24p351_lMTGV_jwxulNHMOG1Ge-7D51Yzyo2GtoP1ufVtuUfr9IfI-STtLBzxPPZfClKxy1yCN6A4p_SeQwoL-VdUgrxpczozU9PW4pLVPU2DPl6T-P1YJer7Xr5QGrLR7Q=w172-h224-p-k-no" alt="Punta de Anca en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGte7R_steM9sRJmd84rjQT7G7Jy2wXcpCNwRGl9Os3nCdsDNnOjZI-yJCyVKLY_0gri0EXb1HEbtyUGfRjvqs4f4Jp4cT56OQCW7qlio2tv15rUm8h4OO6u4kvgUExzLL_uuMK=w172-h224-p-k-no" alt="Carne Asada en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFu6hxSSXl9OrsfjqRZaguEnKt4KsVcAtn6D-aHQDB7wlGgPYbsGnsJuft0nywzURwtwin8uAMDeCb5H8enM7bTemH7LSaVQJ4s3x3Abs_dNCZyaEPwrdA9rx_yO2aM4K1jIIGiGw=w172-h224-p-k-no" alt="Churrasco en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHA-QrwrkEefibFlcASO353pyagbm-qxMaKR1SU3zY-5haPdWwRpJVbJ6qG_tXCTbWHMHUYa5tNjbogjwD4x6DZeSzTlJDp143plBLI1bItGB7JVzJz0q8md7RQbBwfsqWwuO6F=w172-h224-p-k-no" alt="Solomito en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXcWv_LajydFd1nFrxKdwIqvtMA8qDaR86toZUV2f4B1QHx7_CM-Kwp30kQhpWX6rg6MO5Lvr6l574zP2uA4IvNWJ5wcpmryjW2UrbSPNkEeCXCSyiW-wo9vKhXuM7xDZQt-M=w172-h224-p-k-no" alt="Cañón de Cerdo Asado en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHGFSN8fIuMD1hNvOQEvX44eW-RE3NIvFQ4lBWhgM6ANmT9NXDLdHB70rF7pQ5BRkYzCIG_iF5zHFxx8EaxioJmnKC_JoLbOJZ4r-Hqn0fbvyYXtu65QwKCkQJfcwRwz_BWm762=w172-h224-p-k-no" alt="Parrillas Mixta en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAG3Th9YMmX0l2TUzjegz1LiVt0TYxQEg3zYJLLnTrjOtzIIBDPSRIrauyzYXEFeRuNj0a_yShonhLE4nKixTNxRvhb5LSM7pyUv-RcF54fF0ddCG2BPcq8xoPaFPsS7nL8Oa_Hz=w172-h224-p-k-no" alt="Chorizo Antioqueño en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEFKxbTopYfYx_-67iU-8bFEPMmy3RhQ7kEV-AshMSRz3LoWu2f025A1MappjvHfFLfNI0DDq02tvI2y4-JIps1QX0gdSN_73mDZARbaMgbNCvs9eVqsBmk2YIPKp-ELgeoXR4t=w172-h224-p-k-no" alt="Hamburger en Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAERxamNcP2QCMYtAk-0HCyZ6ZlJS-9kb62Ae7A-s-q2sFB73MB01l1C-DUKexvje6fcg3MXBiT8pfkNWcRG3Qel69CGTCKOfSiqz_6z3wP-RsstQEI9O0QlMlbz-BKkpgNfK_yYVg=w172-h224-p-k-no" alt="Vista del restaurante Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGS2186VNPVBhlU39bcdK8Ehh5H6unPalzW-W045GNuIN7R412DH5iBGcEMJxgXv6yccBYtq9GrU2VaQkUpxp1HfcTI83t1H4Y2UA1LYgxCOV9ZPd9lvss93VK6MdSL0mU4mH9p=w172-h224-p-k-no" alt="Exterior de Niko Parrilla Las Vegas">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAEzFGe-D1rd3k6oIC5QyDqsV5jnq7KeCo5cxtmF8DDVFSGmIKJxfJkhhnTVBdoZ118n7xa5R3ObSfRufQ_2QpC4ZMyVXMTqFp_G_xZsejpShsYIUbbrP8mfAbXeud0ofI0Gyb3kaQ=w172-h224-p-k-no" alt="Ambiente de Niko Parrilla Las Vegas">
+    </div>
+  </section>
+
+  <!-- RESERVAS Y DOMICILIOS -->
+  <section id="reservas">
+    <h2>Reservas y domicilios</h2>
+    <p>Reserva tu mesa o haz tu pedido sin complicarte.</p>
+    <p><strong>WhatsApp / Teléfono:</strong> 304 667 5749</p>
+    <p>Abre hasta las 12 a.m. (todos los días).</p>
+    <a href="https://wa.me/573046675749" class="btn">Escribir por WhatsApp</a>
+  </section>
+
+  <!-- CÓMO LLEGAR -->
+  <section id="contacto">
+    <h2>Cómo llegar</h2>
+    <p>Estamos en la estación Terpel de la vía Las Vegas, Sabaneta.</p>
+    <p><strong>Dirección:</strong> Cl. 57 Sur #48199 48- a, Sabaneta, Antioquia.</p>
+
+    <!-- Mini mapa de Google Maps -->
+    <div style="margin-top: 1.5rem; border-radius: 0.75rem; overflow: hidden; border: 1px solid #2a2a30;">
+      <iframe
+        src="https://www.google.com/maps?q=Cl.+57+Sur+%2348-199,+Sabaneta,+Antioquia&output=embed"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="btns-mapas">
+      <a href="https://maps.app.goo.gl/" class="btn">Abrir en Google Maps</a>
+      <a href="https://waze.com/ul?ll=6.15,-75.6&navigate=yes" class="btn btn-secundario">Abrir en Waze</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; Niko Parrilla Las Vegas – Asados y parrilla.</p>
+    <p>
+      Síguenos en Instagram:
+      <a href="https://www.instagram.com/nikoparrillaoficial" target="_blank" rel="noopener noreferrer">
+        @nikoparrillaoficial
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
